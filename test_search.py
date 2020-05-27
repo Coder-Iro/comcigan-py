@@ -10,7 +10,7 @@ class MyTestCase(unittest.TestCase):
         with self.assertRaises(ValueError):
             School("금촌")
 
-    def test_noschoole(self):
+    def test_noschool(self):
         with self.assertRaises(NameError):
             School("그런거 없다.")
 
