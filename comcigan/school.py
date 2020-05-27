@@ -24,6 +24,7 @@ class School:
             self.name = sclist[0][2]
             self.sccode = sclist[0][3]
         self._timeurl = BASEURL + base64.b64encode(f"54952_{self.sccode}_0_1".encode("UTF-8"))
+        self.refresh()
 
     def refresh(self):
         time_res = requests.get(self._timeurl)
