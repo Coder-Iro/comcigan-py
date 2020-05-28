@@ -1,8 +1,11 @@
+from os import environ
+
 import setuptools
 
+version = environ['TRAVIS_TAG'].lstrip('v') if environ['TRAVIS'] == "true" else environ["VERSION_NUMBER"]
 setuptools.setup(
     name="comcigan",
-    version="0.1",
+    version=version,
     license='MIT',
     author="Team IF",
     author_email="Coder-Iro@teamif.io",
