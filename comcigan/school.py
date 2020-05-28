@@ -1,5 +1,6 @@
 import base64
 import json
+from typing import List, Tuple
 
 import requests
 
@@ -11,7 +12,7 @@ class School:
     sccode: int
     _timeurl: str
 
-    def __init__(self, name):
+    def __init__(self, name: str):
         sc_search = requests.get(BASEURL + "80670l" + "%".join(str(name.encode("EUC-KR")).upper()[2:-1]
                                                                .replace("\\X", "\\").split("\\")))
         sc_search.encoding = "UTF-8"
@@ -31,8 +32,8 @@ class School:
     def refresh(self):
         time_res = requests.get(self._timeurl)
         time_res.encoding = "UTF-8"
-
-        return json.loads(time_res.text.replace("\0", ""))
+        rawtimetable = json.loads(time_res.text.replace("\0", ""))
+        week_data = rawtimetable['자료318']
 
     @staticmethod
     def get_class_timetable(time_json, grade, classes):
@@ -74,3 +75,8 @@ class School:
 
         for i in week_table:
             print(i)
+
+    def __getitem__(self, item: tuple) -> List[Tuple[str, str]]:
+        if len(item) != 3:
+            raise IndexError("Indices must be [grade][class][day]")
+        return []
