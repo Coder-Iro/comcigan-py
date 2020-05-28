@@ -6,4 +6,6 @@ deploy:
     secure: RYpNHL1b2SfJCfcsGVq/zD8uJnISOBplH7p6baii9Ao+FuezkNVgq8QAkWVMdpI1aMf0ZkHMGq6OwwcgVNOpJgpDSEFadSiy0Lgcw9jed/107b6bt0JVpFRejFmmdLZNuXhve+6+13MsysvjOSSltSgF5PvGsg6v8Wpe7WodNHWvFjlUK+y8bv6rdWQLg52vT+JZUDmXpaxtdathYPPuGXeHGcl8Fob8IkPdCJ7JYYuVGI4SG/ZrCJYW3ur+tfeCMsWstJeYR4L6drwz7Hvf3/tIJKQEbzDEc8WGiePAAF1+fhxAlQVvbu1djzNHRo+zN3J//DJRWIQ/QILmhAPw+bL5aV+YztpuCRaY+k/JkD08kW9uY/Wvi34f20RIvFYqAZczTFh/gtXHyfGp1IzFy5Zn6Y0ZGgvMGTFhwnEYYFg8M7D4rhxqAy1g9nFLZP0rKN/QLSxoYBxcBx2Ljqca+6i9CpuKwWi8pb8ZfnuPvqIo4GLgRdR36nZfZZigSiaaKSEstHyCWOAd3leAt3Pz83dA1APsLtlKqkMXd4sBCTU7EwphZfaYEG1uQt6N2ogUEQGsO04haX7BAOWawpmfXfmFS8fMoRT1j7FUSN5Hs6ERrw1F56zQm1E4pU4f7MsAFVu9U1cdJrc/b+c8uiBbg9WMCJwNkHtVDb7t4QL/uRQ=
   on:
     tags: true
+  edge: true
+  distributions: "sdist bdist_wheel"
 script: python setup.py sdist bdist_wheel
