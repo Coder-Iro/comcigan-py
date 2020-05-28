@@ -13,6 +13,8 @@ setuptools.setup(
     long_description=open('README.md').read(),
     url="https://github.com/Team-IF/comcigan-py",
     packages=setuptools.find_packages(),
+    install_requires=['requests'],
+    python_requires='>=3',
     classifiers=[
         # 패키지에 대한 태그
         "Programming Language :: Python :: 3",
