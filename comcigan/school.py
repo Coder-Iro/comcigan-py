@@ -1,19 +1,21 @@
 import base64
 import json
-import re
-from typing import List, Tuple
+from typing import List, Tuple, Union
 
 import requests
 from bs4 import BeautifulSoup
 
-routereg = re.compile(r'\./\d{6}\?\d{5}l')
-prefixreg = re.compile(r'\d{6}_')
+from reg import *
+
 comci_resp = requests.get("http://comci.kr:4082/st")
 comci_resp.encoding = 'EUC-KR'
 comcigan_html = BeautifulSoup(comci_resp.text, 'html.parser')
 script = comcigan_html.find_all('script')[1].contents[0]
-route = routereg.search(script).group(0)
-PREFIX = prefixreg.search(script).group(0)
+route = regsearch(routereg, script)
+PREFIX = regsearch(prefixreg, script)
+orgnum = regsearch(orgdatareg, script)[-3:]
+daynum = regsearch(daydatareg, script)[-3:]
+thnum = regsearch(thnamereg, script)[-3:]
 BASEURL = "http://comci.kr:4082" + route[1:8]
 SEARCHURL = BASEURL + route[8:]
 
@@ -45,6 +47,9 @@ class School:
         time_res = requests.get(self._timeurl)
         time_res.encoding = "UTF-8"
         rawtimetable = json.loads(time_res.text.replace("\0", ""))
+        print(list(rawtimetable.keys()))
+        from pprint import pprint
+        print(pprint(rawtimetable))
         week_data = rawtimetable['자료318']
 
     @staticmethod
@@ -88,7 +93,7 @@ class School:
         for i in week_table:
             print(i)
 
-    def __getitem__(self, item: tuple) -> List[Tuple[str, str]]:
+    def __getitem__(self, item: tuple) -> Union[List, Tuple, str]:
         if len(item) != 3:
             raise IndexError("Indices must be [grade][class][day]")
         return []
