@@ -13,7 +13,7 @@ setuptools.setup(
     long_description=open('README.md').read(),
     url="https://github.com/Team-IF/comcigan-py",
     packages=setuptools.find_packages(),
-    install_requires=['requests'],
+    install_requires=['requests', 'beautifulsoup4'],
     python_requires='>=3',
     classifiers=[
         # 패키지에 대한 태그

@@ -1,10 +1,21 @@
 import base64
 import json
+import re
 from typing import List, Tuple
 
 import requests
+from bs4 import BeautifulSoup
 
-BASEURL = "http://comci.kr:4082/191401?"
+routereg = re.compile(r'\./\d{6}\?\d{5}l')
+prefixreg = re.compile(r'\d{6}_')
+comci_resp = requests.get("http://comci.kr:4082/st")
+comci_resp.encoding = 'EUC-KR'
+comcigan_html = BeautifulSoup(comci_resp.text, 'html.parser')
+script = comcigan_html.find_all('script')[1].contents[0]
+route = routereg.search(script).group(0)
+PREFIX = prefixreg.search(script).group(0)
+BASEURL = "http://comci.kr:4082" + route[1:8]
+SEARCHURL = BASEURL + route[8:]
 
 
 class School:
@@ -13,8 +24,8 @@ class School:
     _timeurl: str
 
     def __init__(self, name: str):
-        sc_search = requests.get(BASEURL + "80670l" + "%".join(str(name.encode("EUC-KR")).upper()[2:-1]
-                                                               .replace("\\X", "\\").split("\\")))
+        sc_search = requests.get(SEARCHURL + "%".join(str(name.encode("EUC-KR")).upper()[2:-1]
+                                                      .replace("\\X", "\\").split("\\")))
         sc_search.encoding = "UTF-8"
 
         sc_list = json.loads(sc_search.text.replace("\0", ""))["학교검색"]
@@ -27,7 +38,8 @@ class School:
             self.name = sc_list[0][2]
             self.sccode = sc_list[0][3]
 
-        self._timeurl = BASEURL + base64.b64encode(f"54952_{str(self.sccode)}_0_1".encode("UTF-8")).decode("UTF-8")
+        self._timeurl = BASEURL + "?" + base64.b64encode(f"{PREFIX}{str(self.sccode)}_0_1".encode("UTF-8")).decode(
+            "UTF-8")
 
     def refresh(self):
         time_res = requests.get(self._timeurl)
