@@ -1,11 +1,11 @@
 import re
 
-routereg: re.Pattern = re.compile(r'\./\d{6}\?\d{5}l')
-prefixreg: re.Pattern = re.compile(r"'\d+_'")
-orgdatareg: re.Pattern = re.compile(r'원자료=자료\.자료\d+')
-daydatareg: re.Pattern = re.compile(r'일일자료=자료\.자료\d+')
-thnamereg: re.Pattern = re.compile(r'성명=자료\.자료\d+')
-sbnamereg: re.Pattern = re.compile(r'자료.자료\d+\[sb\]')
+routereg = re.compile(r'\./\d{6}\?\d{5}l')
+prefixreg = re.compile(r"'\d+_'")
+orgdatareg = re.compile(r'원자료=자료\.자료\d+')
+daydatareg = re.compile(r'일일자료=자료\.자료\d+')
+thnamereg = re.compile(r'성명=자료\.자료\d+')
+sbnamereg = re.compile(r'자료.자료\d+\[sb\]')
 
 
 def regsearch(reg: re.Pattern, org: str) -> str:
