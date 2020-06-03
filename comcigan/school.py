@@ -5,7 +5,7 @@ from typing import List, Tuple, Union
 import requests
 from bs4 import BeautifulSoup
 
-from reg import *
+from .reg import *
 
 comci_resp = requests.get("http://comci.kr:4082/st")
 comci_resp.encoding = 'EUC-KR'
