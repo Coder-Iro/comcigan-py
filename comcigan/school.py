@@ -51,7 +51,6 @@ class School:
         time_res = requests.get(self._timeurl)
         time_res.encoding = "UTF-8"
         rawtimetable = json.loads(time_res.text.replace("\0", ""))
-        print(rawtimetable[f'자료{daynum}'][1:])
         subjects: list = rawtimetable[f'자료{sbnum}']
         long_subjects: list = rawtimetable[f'긴자료{sbnum}']
         teachers: list = rawtimetable[f'자료{thnum}']
