@@ -13,9 +13,10 @@ comcigan_html = BeautifulSoup(comci_resp.text, 'html.parser')
 script = comcigan_html.find_all('script')[1].contents[0]
 route = regsearch(routereg, script)
 PREFIX = regsearch(prefixreg, script)[1:-1]
-orgnum = regsearch(orgdatareg, script)[-3:]
-daynum = regsearch(daydatareg, script)[-3:]
-thnum = regsearch(thnamereg, script)[-3:]
+orgnum = extractint(regsearch(orgdatareg, script))
+daynum = extractint(regsearch(daydatareg, script))
+thnum = extractint(regsearch(thnamereg, script))
+sbnum = extractint(regsearch(sbnamereg, script))
 BASEURL = "http://comci.kr:4082" + route[1:8]
 SEARCHURL = BASEURL + route[8:]
 
@@ -47,10 +48,18 @@ class School:
         time_res = requests.get(self._timeurl)
         time_res.encoding = "UTF-8"
         rawtimetable = json.loads(time_res.text.replace("\0", ""))
-        print(list(rawtimetable.keys()))
-        from pprint import pprint
-        print(pprint(rawtimetable))
-        week_data = rawtimetable['자료318']
+        subjects: list = rawtimetable[f'자료{sbnum}']
+        long_subjects: list = rawtimetable[f'긴자료{sbnum}']
+        teachers: list = rawtimetable[f'자료{thnum}']
+        week_data = [
+            [
+                [
+                    [
+                        (subjects[int(str(x)[-2:])] if x != 0 else "") for x in oneday[1:]
+                    ] for oneday in oneclass[1:]
+                ] for oneclass in onegrade[1:]
+            ] for onegrade in rawtimetable[f'자료{daynum}'][1:]
+        ]
 
     @staticmethod
     def get_class_timetable(time_json, grade, classes):
