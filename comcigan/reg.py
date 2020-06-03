@@ -8,7 +8,7 @@ thnamereg = re.compile(r'성명=자료\.자료\d+')
 sbnamereg = re.compile(r'자료.자료\d+\[sb\]')
 
 
-def regsearch(reg: re.Pattern, org: str) -> str:
+def regsearch(reg, org: str) -> str:
     return reg.search(org).group(0)
 
 
