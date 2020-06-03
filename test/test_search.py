@@ -3,12 +3,9 @@ import unittest
 from comcigan import School
 
 
-class MyTestCase(unittest.TestCase):
+class SearchTestCase(unittest.TestCase):
     def test_correct(self):
         self.assertIsInstance(School("운정고등학교"), School)
-
-    def test_get_timetable(self):
-        self.assertIsNone(School("운정고등학교").get_timetable(3, 5, 0))
 
     def test_toomany(self):
         with self.assertRaises(ValueError):
