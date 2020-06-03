@@ -9,4 +9,4 @@ deploy:
   edge: true
   distributions: "sdist bdist_wheel"
 script: python -m unittest discover
-after_success: python setup.py sdist bdist_wheel
+before_deploy: python setup.py sdist bdist_wheel
