@@ -69,4 +69,4 @@ class School:
         ]
 
     def __getitem__(self, item: Union[tuple, int]) -> Union[List, Tuple, str]:
-        return self._week_data.__getitem__(item)
+        return self._week_data.__getitem__((x-1 for x in item))
