@@ -59,10 +59,10 @@ class School:
                 [
                     [
                         (
-                            "" if x == 0 else subjects[int(str(x)[-2:])],
-                            "" if x == 0 else long_subjects[int(str(x)[-2:])],
-                            "" if x == 0 or int(str(x)[:-2]) >= len(teachers) else teachers[int(str(x)[:-2])]
-                        ) for x in oneday[1:]
+                            subjects[int(str(x)[-2:])],
+                            long_subjects[int(str(x)[-2:])],
+                            "" if int(str(x)[:-2]) >= len(teachers) else teachers[int(str(x)[:-2])]
+                        ) for x in oneday[1:] if x != 0
                     ] for oneday in oneclass[1:]
                 ] for oneclass in onegrade[1:]
             ] for onegrade in rawtimetable[f'자료{daynum}'][1:]
