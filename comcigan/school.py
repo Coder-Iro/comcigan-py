@@ -1,6 +1,6 @@
 import base64
 import json
-from typing import List, Tuple, Union
+from typing import List, Tuple
 
 import requests
 from bs4 import BeautifulSoup
@@ -64,15 +64,18 @@ class School:
                             "" if int(str(x)[:-2]) >= len(teachers) else teachers[int(str(x)[:-2])]
                         ) for x in oneday[1:] if x != 0
                     ] for oneday in oneclass[1:6]
-                ] for oneclass in onegrade[1:]
+                ] for oneclass in onegrade
             ] for onegrade in rawtimetable[f'자료{daynum}'][1:]
         ]
 
-    def __getitem__(self, item: Union[tuple, int]) -> Union[List, Tuple, str]:
-        if isinstance(item, int):
-            return self._week_data[item-1]
-        elif len(item) == 2:
-            return self._week_data[item[0]-1][item[1]-1]
-        elif len(item) > 2:
-            return self._week_data.__getitem__((x-1 for x in item[:2])+item[2:])
-            
+    def __getitem__(self, item: int) -> List:
+        return self._week_data[item - 1]
+
+    def __repr__(self):
+        return f"School('{self.name}')"
+
+    def __str__(self):
+        return str(self._week_data)
+
+    def __iter__(self):
+        return iter(self._week_data)
