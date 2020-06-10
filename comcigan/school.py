@@ -63,10 +63,16 @@ class School:
                             long_subjects[int(str(x)[-2:])],
                             "" if int(str(x)[:-2]) >= len(teachers) else teachers[int(str(x)[:-2])]
                         ) for x in oneday[1:] if x != 0
-                    ] for oneday in oneclass[1:5]
+                    ] for oneday in oneclass[1:6]
                 ] for oneclass in onegrade[1:]
             ] for onegrade in rawtimetable[f'자료{daynum}'][1:]
         ]
 
     def __getitem__(self, item: Union[tuple, int]) -> Union[List, Tuple, str]:
-        return self._week_data.__getitem__((x-1 for x in item[:2])+item[2:])
+        if isinstance(item, int):
+            return self._week_data[item-1]
+        elif len(item) == 2:
+            return self._week_data[item[0]-1][item[1]-1]
+        elif len(item) > 2:
+            return self._week_data.__getitem__((x-1 for x in item[:2])+item[2:])
+            
