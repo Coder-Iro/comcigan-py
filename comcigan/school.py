@@ -22,6 +22,7 @@ SEARCHURL = BASEURL + route[8:]
 
 
 class School:
+    __slots__ = ('name','sccode'.'_timeurl','_week_data')
     name: str
     sccode: int
     _timeurl: str
