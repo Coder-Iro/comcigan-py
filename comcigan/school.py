@@ -21,8 +21,14 @@ BASEURL = "http://comci.kr:4082" + route[1:8]
 SEARCHURL = BASEURL + route[8:]
 
 
+def trim(lis):
+    while lis[-1] == 0:
+        del lis[-1]
+    return lis
+
+
 class School:
-    __slots__ = ('name','sccode','_timeurl','_week_data')
+    __slots__ = ('name', 'sccode', '_timeurl', '_week_data')
     name: str
     sccode: int
     _timeurl: str
@@ -63,7 +69,7 @@ class School:
                             subjects[int(str(x)[-2:])],
                             long_subjects[int(str(x)[-2:])],
                             "" if int(str(x)[:-2]) >= len(teachers) else teachers[int(str(x)[:-2])]
-                        ) for x in oneday[1:] if x != 0
+                        ) for x in trim(oneday[1:])
                     ] for oneday in oneclass[1:6]
                 ] for oneclass in onegrade
             ] for onegrade in rawtimetable[f'자료{daynum}'][1:]
