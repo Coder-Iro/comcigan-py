@@ -5,7 +5,7 @@ from typing import List, Tuple
 from aiohttp import ClientSession
 from bs4 import BeautifulSoup
 
-from .reg import *
+from .reg import routereg, prefixreg, orgdatareg, daydatareg, thnamereg, sbnamereg, regsearch, extractint
 
 async def AsyncRequest(url: str, encoding: str = None):
     async with ClientSession() as sess:
@@ -59,14 +59,14 @@ class AsyncSchool:
         sc_search = await AsyncRequest(SEARCHURL + '%'.join(str(name.encode('EUC-KR')).upper()[2: -1].replace('\\X', '\\').split('\\')))
         sc_list = loads(sc_search.replace('\0', ''))['학교검색']
 
-        if len(sc_list) > 1: 
-            raise ValueError('More than one school is searched by the name passed.')
-        elif not len(sc_list): 
-            raise NameError('No schools have been searched by the name passed.')
-        else:
+        if len(sc_list) == 1:
             self.name = sc_list[0][2]
             self.sccode = sc_list[0][3]
-
+        elif len(sc_list) > 1: 
+            raise ValueError('More than one school is searched by the name passed.')
+        else: 
+            raise NameError('No schools have been searched by the name passed.')
+            
         self._timeurl = BASEURL + '?' + b64encode(f'{PREFIX}{str(self.sccode)}_0_1'.encode('UTF-8')).decode('UTF-8')
         self._week_data = [[[[('', '', '')]]]]
         await self.refresh()
