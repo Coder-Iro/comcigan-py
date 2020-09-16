@@ -9,10 +9,12 @@ from .reg import *
 
 async def AsyncRequest(url: str, encoding: str = None):
     async with ClientSession() as sess:
-        async with sess.get(url) as res: return await res.text(encoding)
+        async with sess.get(url) as res: 
+            return await res.text(encoding)
     
 def trim(lis):
-    while not lis[-1]: del lis[-1]
+    while not lis[-1]: 
+        del lis[-1]
     return lis
 
 URL = 'http://comci.kr:4082'
@@ -57,8 +59,10 @@ class AsyncSchool:
         sc_search = await AsyncRequest(SEARCHURL + '%'.join(str(name.encode('EUC-KR')).upper()[2: -1].replace('\\X', '\\').split('\\')))
         sc_list = loads(sc_search.replace('\0', ''))['학교검색']
 
-        if len(sc_list) > 1: raise ValueError('More than one school is searched by the name passed.')
-        elif not len(sc_list): raise NameError('No schools have been searched by the name passed.')
+        if len(sc_list) > 1: 
+            raise ValueError('More than one school is searched by the name passed.')
+        elif not len(sc_list): 
+            raise NameError('No schools have been searched by the name passed.')
         else:
             self.name = sc_list[0][2]
             self.sccode = sc_list[0][3]
@@ -93,7 +97,11 @@ class AsyncSchool:
             ] for onegrade in rawtimetable[f'자료{daynum}'][1:]
         ]
 
-    def __getitem__(self, item: int) -> List: return self._week_data[item - 1]
-    def __repr__(self) -> str: return f'School(\'{self.name}\')'
-    def __str__(self) -> str: return str(self._week_data)
-    def __iter__(self): return iter(self._week_data)
+    def __getitem__(self, item: int) -> List: 
+        return self._week_data[item - 1]
+    def __repr__(self) -> str: 
+        return f'School(\'{self.name}\')'
+    def __str__(self) -> str: 
+        return str(self._week_data)
+    def __iter__(self): 
+        return iter(self._week_data)

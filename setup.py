@@ -1,5 +1,4 @@
 from os import environ
-from sys import version_info
 import setuptools
 
 version = environ['TRAVIS_TAG'].lstrip('v') if environ['TRAVIS'] == "true" else environ["VERSION_NUMBER"]
