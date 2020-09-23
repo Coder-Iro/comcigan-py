@@ -1,5 +1,4 @@
 from os import environ
-
 import setuptools
 
 version = environ['TRAVIS_TAG'].lstrip('v') if environ['TRAVIS'] == "true" else environ["VERSION_NUMBER"]
@@ -13,8 +12,8 @@ setuptools.setup(
     long_description=open('README.md').read(),
     url="https://github.com/Team-IF/comcigan-py",
     packages=setuptools.find_packages(),
-    install_requires=['requests', 'beautifulsoup4'],
-    python_requires='>=3',
+    install_requires=['requests', 'beautifulsoup4', 'aiohttp'],
+    python_requires='>=3.5',
     classifiers=[
         # 패키지에 대한 태그
         "Programming Language :: Python :: 3",
