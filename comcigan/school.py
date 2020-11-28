@@ -18,7 +18,7 @@ daynum = extractint(regsearch(daydatareg, script))
 thnum = extractint(regsearch(thnamereg, script))
 sbnum = extractint(regsearch(sbnamereg, script))
 BASEURL = "http://comci.kr:4082" + route[1:8]
-SEARCHURL = BASEURL + route[8:]
+SEARCHURL= BASEURL + route[8:]
 
 
 def trim(lis):
