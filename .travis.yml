@@ -8,5 +8,5 @@ deploy:
     tags: true
   edge: true
   distributions: "sdist bdist_wheel"
-script: python -m unittest -v test/test_search.py
+script: python -m unittest -v 
 before_deploy: python setup.py sdist bdist_wheel
