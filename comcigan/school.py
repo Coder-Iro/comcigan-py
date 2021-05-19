@@ -80,7 +80,7 @@ class School:
                             subjects[int(str(x)[-2:])],
                             long_subjects[int(str(x)[-2:])],
                             '' if int(str(x)[:-2]) >= len(teachers) else teachers[int(str(x)[:-2])]
-                        ) for x in trim(oneday[1:])
+                        ) for x in filter(lambda x: str(x)[:-2], trim(oneday[1:]))
                     ] for oneday in oneclass[1:6]
                 ] for oneclass in onegrade
             ] for onegrade in rawtimetable[f'자료{daynum}'][1:]
