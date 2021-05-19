@@ -1,3 +1,4 @@
 aiohttp
 requests
 beautifulsoup4
+coverage
