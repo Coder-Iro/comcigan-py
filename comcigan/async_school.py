@@ -61,7 +61,10 @@ class AsyncSchool:
     _timeurl: str
     _week_data: List[List[List[List[Tuple[str, str, str]]]]]
 
-    async def init(self, name: str):
+    @classmethod
+    async def init(cls, name: str):
+        res = cls()
+
         CONSTS = CONSTANT()
         await CONSTS.refresh()
 
@@ -69,7 +72,7 @@ class AsyncSchool:
         BASEURL = CONSTS.BASEURL
         SEARCHURL = CONSTS.SEARCHURL
 
-        self.CONSTS = CONSTS
+        res.CONSTS = CONSTS
 
         sc_search = await AsyncRequest(
             SEARCHURL
@@ -78,18 +81,19 @@ class AsyncSchool:
         sc_list = loads(sc_search.replace("\0", ""))["학교검색"]
 
         if len(sc_list) == 1:
-            self.name = sc_list[0][2]
-            self.sccode = sc_list[0][3]
+            res.name = sc_list[0][2]
+            res.sccode = sc_list[0][3]
         elif len(sc_list) > 1:
             raise ValueError("More than one school is searched by the name passed.")
         else:
             raise NameError("No schools have been searched by the name passed.")
 
-        self._timeurl = f"{BASEURL}?" + b64encode(
-            f"{PREFIX}{str(self.sccode)}_0_1".encode("UTF-8")
+        res._timeurl = f"{BASEURL}?" + b64encode(
+            f"{PREFIX}{str(res.sccode)}_0_1".encode("UTF-8")
         ).decode("UTF-8")
-        self._week_data = [[[[("", "", "")]]]]
-        await self.refresh()
+        res._week_data = [[[[("", "", "")]]]]
+        await res.refresh()
+        return res
 
     async def refresh(self):
         time_res = await AsyncRequest(self._timeurl)

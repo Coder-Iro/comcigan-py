@@ -19,19 +19,17 @@ class SearchTestCase(unittest.TestCase):
 
 class AsyncSearchTestCase(unittest.TestCase):
     def test_correct(self):
-        sc = AsyncSchool()
-        asyncio.get_event_loop().run_until_complete(sc.init("운정고등학교"))
-        self.assertIsInstance(sc, AsyncSchool)
+        self.assertIsInstance(
+            asyncio.get_event_loop().run_until_complete(AsyncSchool.init("운정고등학교")), AsyncSchool
+        )
 
     def test_toomany(self):
-        sc = AsyncSchool()
         with self.assertRaises(ValueError):
-            asyncio.get_event_loop().run_until_complete(sc.init("금촌"))
+            asyncio.get_event_loop().run_until_complete(AsyncSchool.init("금촌"))
 
     def test_noschool(self):
-        sc = AsyncSchool()
         with self.assertRaises(NameError):
-            asyncio.get_event_loop().run_until_complete(sc.init("그런거 없다."))
+            asyncio.get_event_loop().run_until_complete(AsyncSchool.init("그런거 없다."))
 
 
 if __name__ == "__main__":
