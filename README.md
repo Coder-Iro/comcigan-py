@@ -26,4 +26,4 @@ print(myschool[2][3][4][3])
 ```
 
 ## License
-This project is under the GNU Lesser General Public License version 3.0 or later (LGPL v3+).
+This project is under the GNU Lesser General Public License version 3.0 or later (LGPL v3.0+).
