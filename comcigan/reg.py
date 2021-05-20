@@ -1,6 +1,6 @@
 import re
 
-routereg = re.compile(r'\./\d{6}\?\d{6}l')
+routereg = re.compile(r'\./\d+\?\d+l')
 prefixreg = re.compile(r"'\d+_'")
 orgdatareg = re.compile(r'원자료=자료\.자료\d+')
 daydatareg = re.compile(r'일일자료=자료\.자료\d+')
