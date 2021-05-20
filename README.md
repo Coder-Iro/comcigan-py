@@ -21,7 +21,7 @@ myschool = School("schoolname")
 print(myschool.name)
 # This may not be the same as "schoolname".
 
-print(myschool[2][3][4][3])
+print(myschool[2][3][3][3])
 # This returns Thursday 3rd period in the 2nd grade 3rd class.
 ```
 
