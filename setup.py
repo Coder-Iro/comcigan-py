@@ -6,7 +6,6 @@ version = environ['TRAVIS_TAG'].lstrip('v') if environ['TRAVIS'] == 'true' else 
 setup(
     name = 'comcigan',
     version = version,
-    license = 'MIT',
     author = 'Team IF',
     author_email = 'Coder-Iro@teamif.io',
     description = 'Unofficial Comcigan API python wrapper',
