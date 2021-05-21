@@ -1,13 +1,13 @@
 # comcigan-py
 [![Travis (.com)](https://img.shields.io/travis/com/Team-IF/comcigan-py?logo=travis&style=flat-square)](https://www.travis-ci.com/github/Team-IF/comcigan-py) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/comcigan?logo=python&style=flat-square)](https://pypi.org/project/comcigan/) [![PyPI](https://img.shields.io/pypi/v/comcigan?logo=python&style=flat-square)](https://pypi.org/project/comcigan/) [![PyPI - Downloads](https://img.shields.io/pypi/dm/comcigan?style=flat-square)](https://pypi.org/project/comcigan/) [![Codecov](https://img.shields.io/codecov/c/github/Team-IF/comcigan-py?logo=codecov&style=flat-square)](https://app.codecov.io/gh/Team-IF/comcigan-py)  
-Comcigan-py is a parser for korean school timetable service "comcigan" made with python.
+Comcigan-py is a parser for korean school timetable service ["comcigan"](http://컴시간학생.kr) made with python.
 ## Installation
 Install and update using [pip](https://pip.pypa.io/en/stable/quickstart/):
 ```sh
 $ pip install comcigan
 ```
 ## Example
-A simple example for synced version
+A simple example for sync/async version
 ```python
 from comcigan import School, AsyncSchool
 
