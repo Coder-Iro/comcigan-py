@@ -19,7 +19,7 @@ setup(
     classifiers = [
         # 패키지에 대한 태그
         'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
         'Operating System :: OS Independent'
     ],
 )
