@@ -12,7 +12,7 @@ A simple example for sync/async version
 from comcigan import School, AsyncSchool
 
 myschool = School("schoolname")
-myschool = await AsyncSchool("schoolname") # or this for async version
+myschool = await AsyncSchool.init("schoolname") # or this for async version
 # "schoolname" doesn't have to be the full name of the school.
 # comcigan-py automatically recognizes "schoolname" as a search query.
 # If there is only one school searched, an instance of that school is created.
