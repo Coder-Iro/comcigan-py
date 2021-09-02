@@ -52,6 +52,7 @@ class School:
         sc_list = loads(sc_search.text.replace('\0', ''))['학교검색']
 
         if len(sc_list) == 1:
+            self.region = sc_list[0][1]
             self.name = sc_list[0][2]
             self.sccode = sc_list[0][3]
         elif len(sc_list) > 1: 
