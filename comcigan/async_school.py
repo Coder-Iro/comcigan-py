@@ -54,7 +54,7 @@ class CONSTANT:
 
 
 class AsyncSchool:
-    __slots__ = ("name", "sccode", "_timeurl", "_week_data", "CONSTS")
+    __slots__ = ("name", "sccode", "region", "_timeurl", "_week_data", "CONSTS")
 
     name: str
     sccode: int
