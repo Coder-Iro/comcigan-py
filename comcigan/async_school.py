@@ -54,7 +54,7 @@ class CONSTANT:
 
 
 class AsyncSchool:
-    __slots__ = ("name", "sccode", "_timeurl", "_week_data", "CONSTS")
+    __slots__ = ("name", "sccode", "region", "_timeurl", "_week_data", "CONSTS")
 
     name: str
     sccode: int
@@ -81,6 +81,7 @@ class AsyncSchool:
         sc_list = loads(sc_search.replace("\0", ""))["학교검색"]
 
         if len(sc_list) == 1:
+            res.region = sc_list[0][1]
             res.name = sc_list[0][2]
             res.sccode = sc_list[0][3]
         elif len(sc_list) > 1:
