@@ -54,7 +54,7 @@ class CONSTANT:
 
 
 class AsyncSchool:
-    __slots__ = ("name", "sccode", "region", "_timeurl", "_week_data", "CONSTS")
+    __slots__ = ("region", "name", "sccode", "_timeurl", "_week_data", "CONSTS")
 
     name: str
     sccode: int
@@ -76,7 +76,12 @@ class AsyncSchool:
 
         sc_search = await AsyncRequest(
             SEARCHURL
-            + "%".join(str(name.encode("EUC-KR")).upper()[2:-1].replace("\\X", "\\").split("\\"))
+            + "%".join(
+                str(name.encode("EUC-KR"))
+                .upper()[2:-1]
+                .replace("\\X", "\\")
+                .split("\\")
+            )
         )
         sc_list = loads(sc_search.replace("\0", ""))["학교검색"]
 
@@ -115,7 +120,9 @@ class AsyncSchool:
                         (
                             subjects[int(str(x)[-2:])],
                             long_subjects[int(str(x)[-2:])],
-                            "" if int(str(x)[:-2]) >= len(teachers) else teachers[int(str(x)[:-2])],
+                            ""
+                            if int(str(x)[:-2]) >= len(teachers)
+                            else teachers[int(str(x)[:-2])],
                         )
                         for x in filter(lambda x: str(x)[:-2], trim(oneday[1:]))
                     ]
