@@ -1,6 +1,7 @@
+from typing import List, Tuple
+
 from base64 import b64encode
 from json import loads
-from typing import List, Tuple
 
 from aiohttp import ClientSession
 from bs4 import BeautifulSoup
@@ -76,7 +77,12 @@ class AsyncSchool:
 
         sc_search = await AsyncRequest(
             SEARCHURL
-            + "%".join(str(name.encode("EUC-KR")).upper()[2:-1].replace("\\X", "\\").split("\\"))
+            + "%".join(
+                str(name.encode("EUC-KR"))
+                .upper()[2:-1]
+                .replace("\\X", "\\")
+                .split("\\")
+            )
         )
         sc_list = loads(sc_search.replace("\0", ""))["학교검색"]
 
@@ -115,7 +121,9 @@ class AsyncSchool:
                         (
                             subjects[int(str(x)[-2:])],
                             long_subjects[int(str(x)[-2:])],
-                            "" if int(str(x)[:-2]) >= len(teachers) else teachers[int(str(x)[:-2])],
+                            ""
+                            if int(str(x)[:-2]) >= len(teachers)
+                            else teachers[int(str(x)[:-2])],
                         )
                         for x in filter(lambda x: str(x)[:-2], trim(oneday[1:]))
                     ]

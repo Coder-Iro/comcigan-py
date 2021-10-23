@@ -20,7 +20,8 @@ class SearchTestCase(unittest.TestCase):
 class AsyncSearchTestCase(unittest.TestCase):
     def test_correct(self):
         self.assertIsInstance(
-            asyncio.get_event_loop().run_until_complete(AsyncSchool.init("운정고등학교")), AsyncSchool
+            asyncio.get_event_loop().run_until_complete(AsyncSchool.init("운정고등학교")),
+            AsyncSchool,
         )
 
     def test_toomany(self):
