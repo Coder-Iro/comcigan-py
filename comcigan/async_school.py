@@ -1,6 +1,7 @@
+from typing import List, Tuple
+
 from base64 import b64encode
 from json import loads
-from typing import List, Tuple
 
 from aiohttp import ClientSession
 from bs4 import BeautifulSoup
@@ -54,7 +55,7 @@ class CONSTANT:
 
 
 class AsyncSchool:
-    __slots__ = ("region", "name", "sccode", "_timeurl", "_week_data", "CONSTS")
+    __slots__ = ("name", "sccode", "region", "_timeurl", "_week_data", "CONSTS")
 
     name: str
     sccode: int
