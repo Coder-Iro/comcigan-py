@@ -15,15 +15,15 @@ A simple example for sync/async version
 from comcigan import School, AsyncSchool
 
 myschool = School("schoolname")
-myschool = await AsyncSchool.init("schoolname") # or this for async version
+myschool = await AsyncSchool.init("schoolname")  # or this for async version
 # "schoolname" doesn't have to be the full name of the school.
 # comcigan-py automatically recognizes "schoolname" as a search query.
 # If there is only one school searched, an instance of that school is created.
 # If there are more than two schools searched, ValueError is raised.
 # If there is no school searched, NameError is raised.
 
-print(myschool.name)
-# This may not be the same as "schoolname".
+print(myschool.name)  # This prints the school's name
+# The result may not be the same as "schoolname".
 
 print(myschool[2][3][3][3])
 # This returns Thursday 3rd period in the 2nd grade 3rd class.
