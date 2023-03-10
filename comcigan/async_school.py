@@ -30,7 +30,7 @@ def trim(lis):
     return lis
 
 
-URL = "http://112.186.146.81:4082"
+URL = "http://112.186.226.178:4082"
 
 
 class CONSTANT:
