@@ -2,8 +2,8 @@ import re
 
 routereg = re.compile(r"\./\d+\?\d+l")
 prefixreg = re.compile(r"'\d+_'")
-orgdatareg = re.compile(r"원자료=자료\.자료\d+")
-daydatareg = re.compile(r"일일자료=자료\.자료\d+")
+orgdatareg = re.compile(r"원자료=Q자료\(자료\.자료\d+")
+daydatareg = re.compile(r"일일자료=Q자료\(자료\.자료\d+")
 thnamereg = re.compile(r"성명=자료\.자료\d+")
 sbnamereg = re.compile(r"자료.자료\d+\[sb\]")
 
