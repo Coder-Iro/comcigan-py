@@ -15,7 +15,7 @@ setup(
     description="Unofficial Comcigan API python wrapper",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/Team-IF/comcigan-py",
+    url="https://github.com/Coder-Iro/comcigan-py",
     packages=find_packages(),
     install_requires=["requests", "beautifulsoup4", "aiohttp"],
     python_requires=">=3.7",
