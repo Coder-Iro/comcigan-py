@@ -111,9 +111,11 @@ class AsyncSchool:
         daynum = self.CONSTS.daynum
 
         subjects: list = rawtimetable[f"자료{sbnum}"]
-        long_subjects: list = rawtimetable[f"긴자료{sbnum}"]
+        long_subjects: list = rawtimetable[f"자료{sbnum}"]
         teachers: list = rawtimetable[f"자료{thnum}"]
 
+        for i in rawtimetable[f"자료{daynum}"][1:]:
+            i[0] = [i[0]]
         self._week_data = [
             [
                 [
