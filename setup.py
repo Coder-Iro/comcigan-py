@@ -1,5 +1,6 @@
 from os import environ
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 version = (
     environ["TRAVIS_TAG"].lstrip("v")
@@ -17,7 +18,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/Coder-Iro/comcigan-py",
     packages=find_packages(),
-    install_requires=["requests", "beautifulsoup4", "aiohttp"],
+    install_requires=["requests", "beautifulsoup4", "aiohttp", "lxml"],
     python_requires=">=3.7",
     classifiers=[
         # 패키지에 대한 태그

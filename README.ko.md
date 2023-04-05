@@ -1,16 +1,23 @@
 # comcigan-py
-[![Travis (.com)](https://img.shields.io/travis/com/Team-IF/comcigan-py?logo=travis&style=flat-square)](https://www.travis-ci.com/github/Team-IF/comcigan-py) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/comcigan?logo=python&style=flat-square)](https://pypi.org/project/comcigan/) [![PyPI](https://img.shields.io/pypi/v/comcigan?logo=python&style=flat-square)](https://pypi.org/project/comcigan/) [![PyPI - Downloads](https://img.shields.io/pypi/dm/comcigan?style=flat-square)](https://pypi.org/project/comcigan/) [![Codecov](https://img.shields.io/codecov/c/github/Team-IF/comcigan-py?logo=codecov&style=flat-square)](https://app.codecov.io/gh/Team-IF/comcigan-py) 
 
-[English](./README.md)  |  [**한국어**](./README.ko.md)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/comcigan?logo=python&style=flat-square)](https://pypi.org/project/comcigan/) [![PyPI](https://img.shields.io/pypi/v/comcigan?logo=python&style=flat-square)](https://pypi.org/project/comcigan/) [![PyPI - Downloads](https://img.shields.io/pypi/dm/comcigan?style=flat-square)](https://pypi.org/project/comcigan/) [![Codecov](https://img.shields.io/codecov/c/github/Team-IF/comcigan-py?logo=codecov&style=flat-square)](https://app.codecov.io/gh/Team-IF/comcigan-py)
+
+[English](./README.md) | [**한국어**](./README.ko.md)
 
 comcigan-py는 파이썬으로 제작된 ["컴시간 학생시간표"](http://컴시간학생.kr)의 파서 입니다.
+
 ## 설치
+
 [pip](https://pip.pypa.io/en/stable/quickstart/) 를 통해 다음과 같이 입력해서 라이브러리를 설치/업데이트 합니다 :
+
 ```sh
 $ pip install comcigan
 ```
+
 ## 예제
+
 동기/비동기 버전에 대한 간단한 예제
+
 ```python
 from comcigan import School, AsyncSchool
 
@@ -30,5 +37,6 @@ print(myschool[2][3][3][3])
 ```
 
 ## 라이선스
+
 이 프로젝트는 GNU Lesser General Public License version 3.0 or later (LGPL v3.0+)의 라이선스를 따릅니다.
 자세한 사항은 위 라이선스를 참조해주시길 바랍니다.

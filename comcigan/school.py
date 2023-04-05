@@ -1,20 +1,19 @@
-from typing import List, Tuple
-
 from base64 import b64encode
 from json import loads
+from typing import List, Tuple
 
-from requests import get
 from bs4 import BeautifulSoup
+from requests import get
 
 from .reg import (
-    routereg,
-    prefixreg,
-    orgdatareg,
     daydatareg,
-    thnamereg,
-    sbnamereg,
-    regsearch,
     extractint,
+    orgdatareg,
+    prefixreg,
+    regsearch,
+    routereg,
+    sbnamereg,
+    thnamereg,
 )
 
 
@@ -55,7 +54,12 @@ class School:
     def __init__(self, name: str):
         sc_search = get(
             SEARCHURL
-            + "%".join(str(name.encode("EUC-KR")).upper()[2:-1].replace("\\X", "\\").split("\\"))
+            + "%".join(
+                str(name.encode("EUC-KR"))
+                .upper()[2:-1]
+                .replace("\\X", "\\")
+                .split("\\")
+            )
         )
         sc_search.encoding = "UTF-8"
         sc_list = loads(sc_search.text.replace("\0", ""))["학교검색"]
@@ -93,7 +97,9 @@ class School:
                         (
                             subjects[int(str(x)[-2:])],
                             long_subjects[int(str(x)[-2:])],
-                            "" if int(str(x)[:-2]) >= len(teachers) else teachers[int(str(x)[:-2])],
+                            ""
+                            if int(str(x)[:-2]) >= len(teachers)
+                            else teachers[int(str(x)[:-2])],
                         )
                         for x in filter(lambda x: str(x)[:-2], trim(oneday[1:]))
                     ]
