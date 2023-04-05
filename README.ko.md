@@ -1,6 +1,6 @@
 # comcigan-py
 
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/comcigan?logo=python&style=flat-square)](https://pypi.org/project/comcigan/) [![PyPI](https://img.shields.io/pypi/v/comcigan?logo=python&style=flat-square)](https://pypi.org/project/comcigan/) [![PyPI - Downloads](https://img.shields.io/pypi/dm/comcigan?style=flat-square)](https://pypi.org/project/comcigan/) [![Codecov](https://img.shields.io/codecov/c/github/Team-IF/comcigan-py?logo=codecov&style=flat-square)](https://app.codecov.io/gh/Team-IF/comcigan-py)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Coder-Iro/comcigan-py/test.yml?label=action&logo=github&style=flat-square)](https://github.com/Coder-Iro/comcigan-py/actions) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/comcigan?logo=python&style=flat-square)](https://pypi.org/project/comcigan/) [![PyPI](https://img.shields.io/pypi/v/comcigan?logo=python&style=flat-square)](https://pypi.org/project/comcigan/) [![PyPI - Downloads](https://img.shields.io/pypi/dm/comcigan?style=flat-square)](https://pypi.org/project/comcigan/) [![Codecov](https://img.shields.io/codecov/c/github/Coder-Iro/comcigan-py?logo=codecov&style=flat-square)](https://app.codecov.io/gh/Coder-Iro/comcigan-py)
 
 [English](./README.md) | [**한국어**](./README.ko.md)
 

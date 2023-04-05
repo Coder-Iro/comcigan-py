@@ -3,8 +3,8 @@ from os import environ
 from setuptools import find_packages, setup
 
 version = (
-    environ["TRAVIS_TAG"].lstrip("v")
-    if environ["TRAVIS"] == "true"
+    environ["GITHUB_REF_NAME"].lstrip("v")
+    if environ.get("GITHUB_ACTIONS")
     else environ["VERSION_NUMBER"]
 )
 
@@ -14,10 +14,10 @@ setup(
     author="Team IF",
     author_email="Coder-Iro@teamif.io",
     description="Unofficial Comcigan API python wrapper",
-    long_description=open("README.md").read(),
+    long_description=open("README.md", "r", encoding="UTF-8").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/Coder-Iro/comcigan-py",
-    packages=find_packages(),
+    packages=find_packages(exclude=["test"]),
     install_requires=["requests", "beautifulsoup4", "aiohttp", "lxml"],
     python_requires=">=3.7",
     classifiers=[
