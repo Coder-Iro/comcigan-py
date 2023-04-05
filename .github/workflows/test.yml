@@ -17,6 +17,8 @@ jobs:
         run: coverage run --omit="*/test*" -m unittest -v
       - name: Upload Coverage to codecov
         uses: codecov/codecov-action@v3
+      - name: Build package
+        run: python -m build
       - name: Publish distribution 📦 to PyPI
         if: startsWith(github.ref, 'refs/tags')
         uses: pypa/gh-action-pypi-publish@release/v1
