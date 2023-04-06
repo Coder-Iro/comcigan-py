@@ -28,7 +28,7 @@ URL = "http://112.186.226.178:4082"
 comci_resp = get(f"{URL}/st")
 comci_resp.encoding = "EUC-KR"
 
-comcigan_html = BeautifulSoup(comci_resp.text, "html.parser")
+comcigan_html = BeautifulSoup(comci_resp.text, "lxml")
 script = comcigan_html.find_all("script")[1].contents[0]
 
 route = regsearch(routereg, script)

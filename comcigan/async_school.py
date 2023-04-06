@@ -1,24 +1,23 @@
-from typing import List, Tuple
-
 from base64 import b64encode
 from json import loads
+from typing import List, Tuple
 
 from aiohttp import ClientSession
 from bs4 import BeautifulSoup
 
 from .reg import (
-    routereg,
-    prefixreg,
-    orgdatareg,
     daydatareg,
-    thnamereg,
-    sbnamereg,
-    regsearch,
     extractint,
+    orgdatareg,
+    prefixreg,
+    regsearch,
+    routereg,
+    sbnamereg,
+    thnamereg,
 )
 
 
-async def AsyncRequest(url: str, encoding: str = None):
+async def AsyncRequest(url: str, encoding: str | None = None):
     async with ClientSession() as sess:
         async with sess.get(url) as res:
             return await res.text(encoding)
@@ -39,7 +38,7 @@ class CONSTANT:
     async def refresh(self):
         comci_resp = await AsyncRequest(f"{URL}/st")
 
-        comcigan_html = BeautifulSoup(comci_resp, "html.parser")
+        comcigan_html = BeautifulSoup(comci_resp, "lxml")
         script = comcigan_html.find_all("script")[1].contents[0]
 
         route = regsearch(routereg, script)

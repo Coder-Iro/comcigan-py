@@ -11,8 +11,8 @@ version = (
 setup(
     name="comcigan",
     version=version,
-    author="Team IF",
-    author_email="Coder-Iro@teamif.io",
+    author="Coder-Iro",
+    author_email="doohee006@gmail.com",
     description="Unofficial Comcigan API python wrapper",
     long_description=open("README.md", "r", encoding="UTF-8").read(),
     long_description_content_type="text/markdown",
