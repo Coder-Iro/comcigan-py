@@ -5,6 +5,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    environment:
+      name: pypi
+      url: https://pypi.org/p/comcigan
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
@@ -16,12 +21,12 @@ jobs:
       - name: Test with unittest
         run: coverage run --omit="*/test*" -m unittest -v
       - name: Upload Coverage to codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
       - name: Build 📦
         if: startsWith(github.ref, 'refs/tags')
         run: python -m build
       - name: Publish distribution 📦 to PyPI
         if: startsWith(github.ref, 'refs/tags')
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
