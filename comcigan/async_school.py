@@ -28,6 +28,9 @@ def trim(lis):
         del lis[-1]
     return lis
 
+def prefix(n):
+  return str(n)[:2] if len(str(n)) == 5 else str(n)[:1]
+
 
 URL = "http://222.106.100.23:4082"
 
@@ -36,7 +39,7 @@ class CONSTANT:
     __slots__ = ("PREFIX", "orgnum", "daynum", "thnum", "sbnum", "BASEURL", "SEARCHURL")
 
     async def refresh(self):
-        comci_resp = await AsyncRequest(f"{URL}/st")
+        comci_resp = await AsyncRequest(f"{URL}/st", "euc-kr")
 
         comcigan_html = BeautifulSoup(comci_resp, "lxml")
         script = comcigan_html.find_all("script")[1].contents[0]
@@ -120,11 +123,11 @@ class AsyncSchool:
                 [
                     [
                         (
-                            subjects[int(str(x)[-2:])],
-                            long_subjects[int(str(x)[-2:])],
+                            subjects[int(prefix(x))],
+                            long_subjects[int(prefix(x))],
                             ""
-                            if int(str(x)[:-2]) >= len(teachers)
-                            else teachers[int(str(x)[:-2])],
+                            if int(str(x)[-2:]) >= len(teachers)
+                            else teachers[int(str(x)[-2:])],
                         )
                         for x in filter(lambda x: str(x)[:-2], trim(oneday[1:]))
                     ]
